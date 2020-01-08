@@ -1,10 +1,16 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-  const Town = sequelize.define('Town', {
-    name: DataTypes.STRING
-  }, {});
+  const Town = sequelize.define(
+    "Town",
+    {
+      name: DataTypes.STRING
+    },
+    {}
+  );
   Town.associate = function(models) {
-    // associations can be defined here
+    Town.hasMany(models.Band, {
+      onDelete: "cascade"
+    });
   };
   return Town;
 };
